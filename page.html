@@ -113,61 +113,62 @@
       0% { opacity: 1; }
       90% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
+    }
+
     /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
 
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-  nav a {
-    padding: 6px 10px;
-    font-size: 0.9rem;
-  }
+      nav a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
 
-  .logo {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
+      .logo {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
 
-  .content {
-    padding: 10px;
-  }
+      .content {
+        padding: 10px;
+      }
 
-  table {
-    font-size: 0.8rem;
-  }
+      table {
+        font-size: 0.8rem;
+      }
 
-  th, td {
-    padding: 8px;
-  }
+      th, td {
+        padding: 8px;
+      }
 
-  #logoStart {
-    font-size: 3rem;
-  }
-}
+      #logoStart {
+        font-size: 3rem;
+      }
+    }
 
-/* Дополнительная адаптация для очень маленьких экранов */
-@media (max-width: 480px) {
-  nav a {
-    padding: 5px 8px;
-    font-size: 0.8rem;
-  }
+    /* Дополнительная адаптация для очень маленьких экранов */
+    @media (max-width: 480px) {
+      nav a {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+      }
 
-  .logo {
-    font-size: 1.8rem;
-  }
+      .logo {
+        font-size: 1.8rem;
+      }
 
-  table {
-    font-size: 0.7rem;
-  }
-}
+      table {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -319,9 +320,8 @@ function showContent(section) {
     content.innerHTML = `
       <h1>Наш Telegram</h1>
       <p>Присоединяйтесь к нашему сообществу в Telegram!</p>
-      <a href="https://t.me/orionmlfl" target="_blank" 
-         style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #00ff99; color: black; text-decoration: none; border-radius: 8px;">
-         Перейти в Telegram
+      <a href="https://t.me/orionmlfl" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #00ff99; color: black; text-decoration: none; border-radius: 8px;">
+        Перейти в Telegram
       </a>
     `;
     document.getElementById('telegramBtn').classList.add('button-active');
