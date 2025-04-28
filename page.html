@@ -24,6 +24,8 @@
       background: #001a00;
       padding: 10px 20px;
       box-shadow: 0 2px 10px #00ff99;
+      z-index: 2;
+      position: relative;
     }
 
     .logo {
@@ -50,7 +52,7 @@
     nav a:hover {
       background: #00ff99;
       color: black;
-      transform: scale(1.1); /* ЭФФЕКТ увеличения */
+      transform: scale(1.1);
     }
 
     .content {
@@ -94,53 +96,34 @@
       background-color: #004d00;
     }
 
-/* Новый стиль для начальной анимации логотипа */
-.logo-start {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  font-size: 5rem;
-  opacity: 0;
-  z-index: 9999;
-  animation: logoAppear 2s ease forwards, logoMoveUp 1.5s ease forwards 2s;
-  text-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99;
-}
+    /* СТАРТОВЫЙ ЛОГОТИП */
+    #logoStart {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: white;
+      text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
+      z-index: 9999;
+      animation: fadeOut 3.5s forwards;
+    }
 
-/* Анимация появления */
-@keyframes logoAppear {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* Анимация перемещения вверх */
-@keyframes logoMoveUp {
-  0% {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    top: 10px;
-    left: 20px;
-    transform: translate(0, 0) scale(1);
-  }
-}
-
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
   </style>
 </head>
 <body>
 
+<!-- СТАРТОВЫЙ ЛОГОТИП -->
+<div id="logoStart">ORION</div>
+
 <header>
   <div class="logo" id="logoNormal" style="display: none;">ORION</div>
-  <div class="logo logo-start" id="logoStart">ORION</div>
-  <nav>
+  <nav id="navMenu" style="display: none;">
     <a onclick="showContent('news')" id="newsBtn">Новости</a>
     <a onclick="showContent('team')" id="teamBtn">Таблица команд</a>
     <a onclick="showContent('schedule')" id="scheduleBtn">Расписание</a>
@@ -156,6 +139,15 @@
 </div>
 
 <script>
+// Скрываем стартовый логотип и показываем меню
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('logoStart').style.display = 'none';
+    document.getElementById('logoNormal').style.display = 'block';
+    document.getElementById('navMenu').style.display = 'flex';
+  }, 3500); // 3.5 секунды
+});
+
 function showContent(section) {
   const content = document.getElementById('contentArea');
   
