@@ -93,12 +93,52 @@
     tr:hover {
       background-color: #004d00;
     }
+
+/* Новый стиль для начальной анимации логотипа */
+.logo-start {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 5rem;
+  opacity: 0;
+  z-index: 9999;
+  animation: logoAppear 2s ease forwards, logoMoveUp 1.5s ease forwards 2s;
+  text-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99;
+}
+
+/* Анимация появления */
+@keyframes logoAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Анимация перемещения вверх */
+@keyframes logoMoveUp {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    top: 10px;
+    left: 20px;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">ORION</div>
+  <div class="logo logo-start" id="logo">ORION</div>
   <nav>
     <a onclick="showContent('news')" id="newsBtn">Новости</a>
     <a onclick="showContent('team')" id="teamBtn">Таблица команд</a>
