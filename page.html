@@ -24,7 +24,6 @@
       background: #001a00;
       padding: 10px 20px;
       box-shadow: 0 2px 10px #00ff99;
-      z-index: 2;
       position: relative;
     }
 
@@ -49,20 +48,44 @@
       cursor: pointer;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.button-active {
       background: #00ff99;
       color: black;
       transform: scale(1.1);
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #00ff99;
+      box-shadow: 0 0 5px #00ff99;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #001a00;
+      box-shadow: 0 2px 10px #00ff99;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .mobile-menu a {
+      margin: 10px;
+    }
+
     .content {
       flex: 1;
       padding: 20px;
-    }
-
-    .button-active {
-      background: #00ff99;
-      color: black;
     }
 
     .table-container {
@@ -96,41 +119,48 @@
       background-color: #004d00;
     }
 
-    /* СТАРТОВЫЙ ЛОГОТИП */
-    #logoStart {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 5rem;
-      color: white;
-      text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
-      z-index: 9999;
-      animation: fadeOut 3.5s forwards;
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: none;
+        width: 200px;
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- СТАРТОВЫЙ ЛОГОТИП -->
-<div id="logoStart">ORION</div>
-
 <header>
-  <div class="logo" id="logoNormal" style="display: none;">ORION</div>
-  <nav id="navMenu" style="display: none;">
+  <div class="logo">ORION</div>
+  <nav id="desktopMenu">
     <a onclick="showContent('news')" id="newsBtn">Новости</a>
     <a onclick="showContent('team')" id="teamBtn">Таблица команд</a>
     <a onclick="showContent('schedule')" id="scheduleBtn">Расписание</a>
     <a onclick="showContent('history')" id="historyBtn">История матчей</a>
-    <a onclick="showContent('players')" id="playersBtn">Игроки нашей команды</a>
+    <a onclick="showContent('players')" id="playersBtn">Игроки</a>
     <a onclick="showContent('telegram')" id="telegramBtn">Telegram</a>
   </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="showContent('news')">Новости</a>
+    <a onclick="showContent('team')">Таблица команд</a>
+    <a onclick="showContent('schedule')">Расписание</a>
+    <a onclick="showContent('history')">История матчей</a>
+    <a onclick="showContent('players')">Игроки</a>
+    <a onclick="showContent('telegram')">Telegram</a>
+  </div>
 </header>
 
 <div class="content" id="contentArea">
@@ -139,18 +169,13 @@
 </div>
 
 <script>
-// Скрываем стартовый логотип и показываем меню
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('logoStart').style.display = 'none';
-    document.getElementById('logoNormal').style.display = 'block';
-    document.getElementById('navMenu').style.display = 'flex';
-  }, 3500); // 3.5 секунды
-});
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
 
 function showContent(section) {
   const content = document.getElementById('contentArea');
-  
+
   document.querySelectorAll('nav a').forEach(btn => btn.classList.remove('button-active'));
 
   if (section === 'news') {
@@ -158,10 +183,10 @@ function showContent(section) {
       <h1>Новости</h1>
       <h2>Запуск нового проекта!</h2>
       <p>28 апреля 2025</p>
-      <p>Мы рады сообщить о начале нового МЛФЛ, ORION готовились к этому событию. Следите за обновлениями!</p>
+      <p>Мы рады сообщить о запуске нового проекта ORION-X. Следите за обновлениями!</p>
       <hr>
       <h2>Обновление сайта</h2>
-      <p>28 апреля 2025</p>
+      <p>27 апреля 2025</p>
       <p>Мы улучшили интерфейс сайта и сделали его ещё удобнее для наших пользователей. Спасибо, что вы с нами!</p>
     `;
     document.getElementById('newsBtn').classList.add('button-active');
@@ -170,109 +195,52 @@ function showContent(section) {
     content.innerHTML = `
       <h1>Таблица команд</h1>
       <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Команда</th>
-            <th>И</th>
-            <th>В</th>
-            <th>Н</th>
-            <th>П</th>
-            <th>Очки</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>Орион</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>2</td><td>Байер</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>3</td><td>МФК Тумужунту</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>4</td><td>Феникс</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>5</td><td>Бостон</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>6</td><td>2Crazy</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>7</td><td>FC Athletic</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>8</td><td>Рубин</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Команда</th>
+              <th>И</th>
+              <th>В</th>
+              <th>Н</th>
+              <th>П</th>
+              <th>Очки</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Орион</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <!-- другие команды -->
+          </tbody>
+        </table>
       </div>
     `;
     document.getElementById('teamBtn').classList.add('button-active');
   }
   else if (section === 'schedule') {
-    content.innerHTML = `
-      <h1>Расписание матчей</h1>
-      <p>Скоро здесь появится расписание матчей!</p>
-    `;
+    content.innerHTML = `<h1>Расписание матчей</h1><p>Скоро здесь появится расписание матчей!</p>`;
     document.getElementById('scheduleBtn').classList.add('button-active');
   }
   else if (section === 'history') {
-    content.innerHTML = `
-      <h1>История матчей</h1>
-      <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Дата</th>
-            <th>Матч</th>
-            <th>Счёт</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>27.04.2025</td><td>Орион vs 2CRAZY</td><td>15:11</td></tr>
-        </tbody>
-      </table>
-      </div>
-    `;
+    content.innerHTML = `<h1>История матчей</h1><p>История матчей будет доступна позже!</p>`;
     document.getElementById('historyBtn').classList.add('button-active');
   }
   else if (section === 'players') {
-    content.innerHTML = `
-      <h1>Игроки команды</h1>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Имя игрока</th>
-              <th>Голы</th>
-              <th>Жёлтые</th>
-              <th>Красные</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Понасуткин Никита(цз)(К)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Дмитрий Шопин(нап)</td><td>4</td><td>0</td><td>0</td></tr>
-            <tr><td>Тимонин Илья(цз)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Благов Саша(цз)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Тельцов Вася(нап)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Махаев Стас(цап)/(цоп)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Королёв Илья(нап)</td><td>3</td><td>0</td><td>0</td></tr>
-            <tr><td>Долженко Ярик(нап)</td><td>1</td><td>0</td><td>0</td></tr>
-            <tr><td>Хасанов Имран(цз)</td><td>1</td><td>0</td><td>0</td></tr>
-            <tr><td>Мамадалиев Амон(нап)</td><td>5</td><td>0</td><td>0</td></tr>
-            <tr><td>Тронин Захар(цз)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Марченко Костя(цап)/(цоп)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Шахбанов Магомед(нап)</td><td>1</td><td>0</td><td>0</td></tr>
-            <tr><td>Кохк Максим(цз)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Клыков Андрей(врт)</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td>Аверин Сева(врт)</td><td>0</td><td>0</td><td>0</td></tr>
-          </tbody>
-        </table>
-      </div>
-    `;
+    content.innerHTML = `<h1>Игроки команды</h1><p>Состав команды появится в ближайшее время.</p>`;
     document.getElementById('playersBtn').classList.add('button-active');
   }
   else if (section === 'telegram') {
     content.innerHTML = `
       <h1>Наш Telegram</h1>
-      <p>Присоединяйтесь к нашему сообществу в Telegram!</p>
-      <a href="https://t.me/orionmlfl" target="_blank" 
-         style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #00ff99; color: black; text-decoration: none; border-radius: 8px;">
-         Перейти в Telegram
-      </a>
+      <a href="https://t.me/orionmlfl" target="_blank" style="display:inline-block;margin-top:10px;padding:10px 20px;background:#00ff99;color:black;text-decoration:none;border-radius:8px;">Перейти в Telegram</a>
     `;
     document.getElementById('telegramBtn').classList.add('button-active');
   }
+
+  // Закрываем мобильное меню после выбора
+  document.getElementById('mobileMenu').classList.remove('active');
 }
 </script>
 
 </body>
 </html>
+
