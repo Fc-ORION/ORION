@@ -43,13 +43,14 @@
       border: 1px solid #00ff99;
       padding: 8px 16px;
       border-radius: 8px;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
       cursor: pointer;
     }
 
     nav a:hover {
       background: #00ff99;
       color: black;
+      transform: scale(1.1); /* ЭФФЕКТ увеличения */
     }
 
     .content {
@@ -117,7 +118,6 @@
 function showContent(section) {
   const content = document.getElementById('contentArea');
   
-  // Снять выделение со всех кнопок
   document.querySelectorAll('nav a').forEach(btn => btn.classList.remove('button-active'));
 
   if (section === 'news') {
