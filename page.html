@@ -283,41 +283,43 @@ function showContent(section) {
  else if (section === 'players') {
   content.innerHTML = `
     <h1>Игроки команды</h1>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Имя игрока</th>
-            <th>Игры</th>
-            <th>Голы</th>
-            <th>Голевые передачи</th>
-            <th>Жёлтые</th>
-            <th>Красные</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Понасуткин Никита(цз)(К)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Дмитрий Шопин(нап)</td><td>1</td><td>4</td><td>3</td><td>0</td><td>0</td></tr>
-          <tr><td>Тимонин Илья(цз)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Благов Саша(цз)</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-          <tr><td>Тельцов Вася(нап)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Махаев Стас(цап)/(цоп)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Королёв Илья(нап)</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Долженко Ярик(нап)</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-          <tr><td>Хасанов Имран(цз)</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
-          <tr><td>Мамадалиев Амон(нап)</td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Тронин Захар(цз)</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-          <tr><td>Марченко Костя(цап)/(цоп)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Шахбанов Магомед(нап)</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
-          <tr><td>Кохк Максим(цз)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Глущенко Артём(цз)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Аристов Ярик(нап)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Уваров Стёпа(цз)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Клыков Андрей(врт)</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-          <tr><td>Аверин Сева(врт)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Имя игрока</th>
+        <th>Позиция</th>
+        <th>Игры</th>
+        <th>Голы</th>
+        <th>Голевые передачи</th>
+        <th>Жёлтые</th>
+        <th>Красные</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Понасуткин Никита</td><td>ЦЗ (К)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>2</td><td>Дмитрий Шопин</td><td>НАП</td><td>1</td><td>4</td><td>3</td><td>0</td><td>0</td></tr>
+      <tr><td>3</td><td>Тимонин Илья</td><td>ЦЗ</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>4</td><td>Благов Саша</td><td>ЦЗ</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>5</td><td>Тельцов Вася</td><td>НАП</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>6</td><td>Махаев Стас</td><td>ЦАП / ЦОП</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>7</td><td>Королёв Илья</td><td>НАП</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>8</td><td>Долженко Ярик</td><td>НАП</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>9</td><td>Хасанов Имран</td><td>ЦЗ</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
+      <tr><td>10</td><td>Мамадалиев Амон</td><td>НАП</td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>11</td><td>Тронин Захар</td><td>ЦЗ</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>12</td><td>Марченко Костя</td><td>ЦАП / ЦОП</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>13</td><td>Шахбанов Магомед</td><td>НАП</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
+      <tr><td>14</td><td>Кохк Максим</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>15</td><td>Глущенко Артём</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>16</td><td>Аристов Ярик</td><td>НАП</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>17</td><td>Уваров Стёпа</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>18</td><td>Клыков Андрей</td><td>ВРТ</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+      <tr><td>19</td><td>Аверин Сева</td><td>ВРТ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    </tbody>
+  </table>
+</div>
   `;
   document.getElementById('playersBtn').classList.add('button-active');
 }
