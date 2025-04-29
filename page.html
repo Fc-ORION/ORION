@@ -185,7 +185,6 @@
     <a onclick="showContent('schedule')" id="scheduleBtn">Расписание</a>
     <a onclick="showContent('history')" id="historyBtn">История матчей</a>
     <a onclick="showContent('players')" id="playersBtn">Игроки нашей команды</a>
-    <a onclick="showContent('feedback')" id="feedbackBtn">Связь с нами</a>
     <a onclick="showContent('telegram')" id="telegramBtn">Telegram</a>
   </nav>
 </header>
@@ -325,48 +324,7 @@ function showContent(section) {
   `;
   document.getElementById('playersBtn').classList.add('button-active');
 }
-  else if (section === 'feedback') {
-  content.innerHTML = `
-    <h1>Форма обратной связи</h1>
-    <p>Заполните форму, и мы получим ваше сообщение в Telegram.</p>
-    <form id="feedbackForm" style="display: flex; flex-direction: column; max-width: 400px;">
-      <input type="text" id="name" placeholder="Ваше имя" required style="margin-bottom: 10px; padding: 10px; border-radius: 5px;">
-      <textarea id="message" placeholder="Ваше сообщение" required style="margin-bottom: 10px; padding: 10px; border-radius: 5px;"></textarea>
-      <button type="submit" style="padding: 10px; background: #00ff99; border: none; border-radius: 5px; cursor: pointer;">Отправить</button>
-    </form>
-    <p id="statusMsg" style="margin-top: 10px;"></p>
-  `;
-  document.getElementById('feedbackBtn').classList.add('button-active');
-
-  const form = document.getElementById('feedbackForm');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const msg = document.getElementById('message').value;
-    const statusMsg = document.getElementById('statusMsg');
-
-    const token = '8129291661:AAHccMSVkUJIFbIza1unNZd3cK0aKWkjHJE'; // ← Замени на свой токен
-    const chatId = '-1002677203210'; // ← Замени на свой chat_id
-    const text = `📩 Новое сообщение от ${name}:\n\n${msg}`;
-
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-    
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text: text })
-    });
-
-    if (response.ok) {
-      statusMsg.textContent = "✅ Сообщение отправлено!";
-      form.reset();
-    } else {
-      statusMsg.textContent = "❌ Ошибка отправки.";
-    }
-  });
-}
-
- else if (section === 'telegram') {
+  else if (section === 'telegram') {
     content.innerHTML = `
       <h1>Наш Telegram</h1>
       <p>Присоединяйтесь к нашему сообществу в Telegram!</p>
