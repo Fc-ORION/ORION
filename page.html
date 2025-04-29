@@ -98,16 +98,20 @@
 
     /* СТАРТОВЫЙ ЛОГОТИП */
     #logoStart {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 5rem;
-      color: white;
-      text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
-      z-index: 9999;
-      animation: fadeOut 3.5s forwards;
-    }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: white;
+  text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
+  z-index: 9999;
+  animation: fadeOut 3.5s forwards;
+  width: 100%;
+  text-align: center;
+  opacity: 0.2;
+  pointer-events: none;
+}
 
     @keyframes fadeOut {
       0% { opacity: 1; }
