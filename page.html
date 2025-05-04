@@ -212,6 +212,10 @@ function showContent(section) {
   if (section === 'news') {
     content.innerHTML = `
       <h1>Новости</h1>
+      <h2>Новостник игр</h2>
+      <p>04 мая 2025</p>
+      <h2>Рады вам сообщить! Из двух игр которые мы сыграли, ни одну не проиграли. Так держать ORION стремимся только вперёд!
+      <hr>
       <h2>Запуск нового проекта!</h2>
       <p>28 апреля 2025</p>
       <p>Мы рады сообщить о начале нового МЛФЛ, ORION готовились к этому событию. Следите за обновлениями!</p>
@@ -274,6 +278,7 @@ function showContent(section) {
         </thead>
         <tbody>
           <tr><td>27.04.2025</td><td>Орион vs 2CRAZY</td><td>14:11</td></tr>
+          <tr><td>04.05.2025</td><td>Орион vs ATHLETIC</td><td>10:7</td></tr>
         </tbody>
       </table>
       </div>
@@ -302,19 +307,19 @@ function showContent(section) {
       <tr><td>7</td><td>Дмитрий Шопин</td><td>НАП</td><td>1</td><td>4</td><td>3</td><td>0</td><td>0</td></tr>
       <tr><td>52</td><td>Тимонин Илья</td><td>ЦЗ</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>20</td><td>Благов Саша</td><td>ЦЗ</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-      <tr><td>88</td><td>Тельцов Вася</td><td>НАП</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>10</td><td>Махаев Стас</td><td>ЦАП / ЦОП</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>88</td><td>Тельцов Вася</td><td>НАП</td><td>1</td><td>3</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>10</td><td>Махаев Стас</td><td>ЦАП / ЦОП</td><td>1</td><td>0</td><td>3</td><td>0</td><td>0</td></tr>
       <tr><td>92</td><td>Королёв Илья</td><td>НАП</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>17</td><td>Долженко Ярик</td><td>НАП</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-      <tr><td>11</td><td>Хасанов Имран</td><td>ЦЗ</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
-      <tr><td>77</td><td>Мамадалиев Амон</td><td>НАП</td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>17</td><td>Долженко Ярик</td><td>НАП</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>11</td><td>Хасанов Имран</td><td>ЦЗ</td><td>1</td><td>2</td><td>4</td><td>0</td><td>0</td></tr>
+      <tr><td>77</td><td>Мамадалиев Амон</td><td>НАП</td><td>1</td><td>6</td><td>1</td><td>1</td><td>0</td></tr>
       <tr><td>21</td><td>Тронин Захар</td><td>ЦЗ</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-      <tr><td>9</td><td>Марченко Костя</td><td>ЦАП / ЦОП</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>13</td><td>Шахбанов Магомед</td><td>НАП</td><td>1</td><td>1</td><td>3</td><td>0</td><td>0</td></tr>
+      <tr><td>9</td><td>Марченко Костя</td><td>ЦАП / ЦОП</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>13</td><td>Шахбанов Магомед</td><td>НАП</td><td>1</td><td>2</td><td>4</td><td>0</td><td>0</td></tr>
       <tr><td>14</td><td>Кохк Максим</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>15</td><td>Глущенко Артём</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>16</td><td>Аристов Ярик</td><td>НАП</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>25</td><td>Уваров Стёпа</td><td>ЦЗ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>25</td><td>Уваров Стёпа</td><td>ЦЗ</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>37</td><td>Назаров Самир</td><td>НАП</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       <tr><td>98</td><td>Клыков Андрей</td><td>ВРТ</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
       <tr><td>35</td><td>Аверин Сева</td><td>ВРТ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
